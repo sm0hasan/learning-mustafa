@@ -5,40 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- A collection of exercises surrounding HTML and CSS to solidify said topics knowledge-->
     <title>HTML & CSS Exercises</title>
+    <link href="styles/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="styles/form.css">
 </head>
 <body>
     <header>
-        <header>
-            <h1>HTML & CSS Practice</h1>
-        </header>
-        
-        <img src="./cat.jpg" alt="Cat">
+        <h1>HTML & CSS Practice</h1>
+        <img src="./cat.jpg" id="profilePic" alt="Cat">
+        <div style="clear:both"></div>
     </header>
     <hr>
     <main>
         <!-- Getting Started - Completed-->
         <!-- Working with HTML - Completed -->
-        <!-- Intorduction to CSS - In-progress -->
+        <!-- Intorduction to CSS - Completed -->
+        <!-- Styling with CSS - ... -->
 
         <section>
             <!-- Paragraph -->
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
             <!-- Unordered List-->
-            <ul>
-                <li><a href="https://www.breakthroughbasketball.com/basics/basics.html">Basketball</a></li>
-                <li><a href="https://elderscrolls.bethesda.net/en/skyrim">Games</a></li>
-                <li><a href="https://www.biron.com/en/education-center/neat-little-guide/the-art-of-napping/">Napping</a></li>
-            </ul>
+            <div id="hobbies"> <!-- Why? -->
+                <ul>
+                    <li><a class="highlight" href="https://www.breakthroughbasketball.com/basics/basics.html">Basketball</a></li>
+                    <li><a class="highlight" href="https://elderscrolls.bethesda.net/en/skyrim">Games</a></li>
+                    <li><a class="highlight" href="https://www.biron.com/en/education-center/neat-little-guide/the-art-of-napping/">Napping</a></li>
+                </ul>
+            </div>
         </section>
 
-        <!-- Piano Video -->
-        <video controls width="250" src="./piano.mp4"></video>
-
         <!-- Canvas -->
-        <canvas id="canvas" width="300" height="300">The Canvas</canvas>
+        <canvas id="canvas" width="300" height="300" class="hide">The Canvas</canvas>
 
         <!-- Skill Table -->
-        <table>
+        <table class="skillTree">
             <tr>
                 <td>Skill</td>
                 <td>Proficiency </td>
@@ -56,6 +56,10 @@
                 <td>Proficient</td>
             </tr>
         </table>
+
+        <!-- Piano Video -->
+        <video controls width="250" src="./piano.mp4"></video>
+
         <!-- Basic Form -->
         <form action="/my-handling-form-page" method="post">
             <ul>
@@ -76,15 +80,14 @@
                     <textarea name="user_message" id="msg" cols="30" rows="10" required>Type here</textarea>
                 </li>
                 <button>Submit</button>
-            </ul>
-
-            
+            </ul>            
         </form>
-
+        <div id="top"><button>Back to Top</button></div>
     </main>
     <hr>
-    <footer>
+    <footer style="color: blue">
         <p>All rights reserved &copy - Don't Copy</p>
     </footer>
+    
 </body>
 </html>

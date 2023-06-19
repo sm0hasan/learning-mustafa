@@ -1,0 +1,50 @@
+body {
+ background-color: rgba(255, 0, 0, 0.398);   
+}
+/* Figure out how to center via positioning*/
+header {
+    font-size: larger;
+    color: aliceblue;
+    display: block;
+    position: relative;
+    text-align: center;
+}
+
+.highlight {
+    color: aqua;
+}
+
+#profilePic {
+    width: 200px;
+    display: inline-block;
+    float: left;
+}
+
+#hobbies { 
+    padding: 20px;
+    border: 1px;
+    margin: 20px;
+    float: left;
+}
+
+.skillTree {
+    padding: 20px;
+    border: 1px;
+    margin: 20px;
+    float: right;
+}
+
+.hide {
+    display: none;
+}
+
+#top {
+    position: sticky;
+    bottom: 20px;
+    float: right;
+    clear: both;
+}
+
+footer, hr {
+    clear: both;
+}
