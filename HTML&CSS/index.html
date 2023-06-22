@@ -11,7 +11,7 @@
 <body>
     <header>
         <h1>HTML & CSS Practice</h1>
-        <img src="./cat.jpg" id="profilePic" alt="Cat">
+        <img src="./images/cat.jpg" id="profilePic" alt="Cat">
         <div style="clear:both"></div>
     </header>
     <hr>
@@ -21,17 +21,25 @@
         <!-- Intorduction to CSS - Completed -->
         <!-- Styling with CSS - ... -->
 
+        <img srcset="./images/small_apple.jpg 500w, ./images/medium_apple.jpg 1000w, ./images/large_apple.jpg 1500w"
+        sizes="(max-width: 600 px) 100vw, (max-width: 900px) 50vw, 33vw" 
+        src="./images/medium_apple.jpg" alt="An example image"/>
+
+        <div class="responsive-video">
+            <iframe src="./videos/apple_vid.mp4" frameborder="0"></iframe>
+        </div>
+
         <section>
             <!-- Paragraph -->
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
             <!-- Unordered List-->
-            <div id="hobbies"> <!-- Why? -->
-                <ul>
+             <!-- Why? -->
+                <ul id="hobbies">
                     <li><a class="highlight" href="https://www.breakthroughbasketball.com/basics/basics.html">Basketball</a></li>
                     <li><a class="highlight" href="https://elderscrolls.bethesda.net/en/skyrim">Games</a></li>
                     <li><a class="highlight" href="https://www.biron.com/en/education-center/neat-little-guide/the-art-of-napping/">Napping</a></li>
                 </ul>
-            </div>
+            
         
 
             <!-- Canvas -->
@@ -58,31 +66,31 @@
             </table>
         </section>
         <!-- Piano Video -->
-        <video controls width="250" src="./piano.mp4"></video>
+        <video controls width="250" src="./videos/piano.mp4"></video>
 
         <!-- Basic Form -->
-        <form action="/my-handling-form-page" method="post">
+        <form action="/my-handling-form-page" method="post" id="form">
             <ul>
-                <li>
+                <li class="one">
                     <label for="name">Name:</label>
                     <input type="text" name="user_name" placeholder="John Doe" required>
                 </li>
-                <li>
+                <li class="two">
                     <label for="email">Email:</label>
                     <input type="email" name="user_mail" placeholder="johnDoe@email.com" required>
                 </li>
-                <li>
+                <li class="three">
                     <label for="age">Age:</label>
                     <input type="number" name="user_age" placeholder="25" required>
                 </li>
-                <li>
+                <li class="four">
                     <label for="message">Message:</label>
                     <textarea name="user_message" id="msg" cols="30" rows="10" required>Type here</textarea>
                 </li>
                 <button>Submit</button>
             </ul>            
         </form>
-        <div id="top"><button>Back to Top</button></div>
+        <div><button id="top">Back to Top</button></div>
     </main>
     <hr>
     <footer style="color: blue">
