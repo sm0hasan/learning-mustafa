@@ -1,20 +1,26 @@
 <%= form_with model: blog_post do |form| %>
-    <% if form.object.errors.any? %>
+    <div class="flex flex-col space-y-3 py-3 px-3 mx-auto">
+        <% if form.object.errors.any? %>
+            <div>
+                <% form.object.errors.full_messages.each do |message| %>
+                    <div><%= message %></div>
+                <% end %>
+            </div>
+        <% end %>
         <div>
-            <% form.object.errors.full_messages.each do |message| %>
-                <div><%= message %></div>
-            <% end %>
+            <%= form.label :title %>
+            <%= form.text_field :title %>
         </div>
-    <% end %>
-    <div>
-        <%= form.label :title %>
-        <%= form.text_field :title %>
-    </div>
-    <div>
-        <%= form.label :body %>
-        <%= form.text_area :body %>
-    </div>
+        <div>
+            <%= form.label :body %>
+            <%= form.text_area :body %>
+        </div>
 
-    <%= form.button %>
+        <div>
+            <%= form.label :published_at %>
+            <%= form.datetime_select :published_at, include_blank: true %>
+        </div>
 
+        <%= form.button class: "bg-gray-200 rounded hover:bg-gray-400 py-1 px-3 mx-auto" %>
+    </div>
 <% end %>
