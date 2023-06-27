@@ -11,21 +11,32 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+  <nav id="header" class="w-full z-30 top-10 py-1 bg-white mt-24">
+    
 
-    <div>
+    <div class="flex justify-between">
       <% if user_signed_in? %>
-        <%= link_to "New blog post", new_blog_post_path %>
-        <%= link_to "Profile", edit_user_registration_path %>
-        <%= button_to "Log out", destroy_user_session_path, method: :delete %>
+        <%= link_to "New blog post", new_blog_post_path, class: "no-underline text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2" %>
+        <div class="flex order-last">
+          <%= link_to "Profile", edit_user_registration_path, class: "no-underline text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2" %>
+          <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "text-white bg-red-500 hover:bg-red-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2" %>
+        </div>
       <% else %>
-        <%= link_to "Login", new_user_session_path %>
-        <%= link_to "Sign up", new_user_registration_path %>
+        <div class="flex order-last">
+          <%= link_to "Login", new_user_session_path, class: "no-underline text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2" %>
+          <%= link_to "Sign up", new_user_registration_path, class: "no-underline text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2" %>
+        </div>  
       <% end %>
     </div>
 
+  </nav>
+
+  <body class="prose mx-auto">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    
+    <hr>
     <%= yield %>
+    
   </body>
 </html>
