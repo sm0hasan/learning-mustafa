@@ -2,8 +2,9 @@ require "test_helper"
 
 class BlogPostTest < ActiveSupport::TestCase
   test "draft? returns true for blog post" do
-    #binding.irb
-    assert BlogPost.new(published_at: nil).draft?
+    # binding.irb
+    blog_posts(:draft).draft? # using fixtures through the blog_posts.yml file
+    # assert BlogPost.new(published_at: nil).draft?
   end
   test "draft? returns fasle for published blog post" do
     #binding.irb
