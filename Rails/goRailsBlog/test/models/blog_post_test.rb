@@ -6,11 +6,11 @@ class BlogPostTest < ActiveSupport::TestCase
     blog_posts(:draft).draft? # using fixtures through the blog_posts.yml file
     # assert BlogPost.new(published_at: nil).draft?
   end
-  test "draft? returns fasle for published blog post" do
+  test "draft? returns false for published blog post" do
     #binding.irb
     refute BlogPost.new(published_at: 1.year.ago).draft?
   end
-  test "draft? returns fasle for scheduled blog post" do
+  test "draft? returns false for scheduled blog post" do
     #binding.irb
     refute BlogPost.new(published_at: 1.year.from_now).draft?
   end
