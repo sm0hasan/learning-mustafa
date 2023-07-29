@@ -1,5 +1,20 @@
-<%= link_to "Edit", edit_blog_post_path(@blog_post) if user_signed_in? %>
+<div>
+    <div>
+        <%= link_to "Edit", edit_blog_post_path(@blog_post) if user_signed_in? %>
+    </div>
 
-<%= image_tag @blog_post.cover_image if  @blog_post.cover_image.present? %>
-<h1><%= @blog_post.title %></h1>
-<%= @blog_post.content %>
+    <div>
+        <%= image_tag @blog_post.cover_image if  @blog_post.cover_image.present? %>
+        <h1><%= @blog_post.title %></h1>
+        <%= @blog_post.content %>
+    </div>
+
+    <div>
+        <h2><%= @blog_post.comments.count %> Comments</h2>
+        <%= render partial: "comments/comment", locals: {blog_post: @blog_post, comment: @comment}%>
+
+        <h3>Add a comment:</h3>
+        <%= render partial: "comments/formcomment", locals: {blog_post: @blog_post, comment: @comment} %>
+    </div>
+</div>
+
