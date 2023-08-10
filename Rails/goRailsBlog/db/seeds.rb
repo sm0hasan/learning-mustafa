@@ -7,12 +7,12 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 
-# user = User.where(email: "1hasanmus2@gmail.com").first_or_initialize
-# user.update!{
-#     password: "password", 
-#     password_confirmation: "password"
-# }
+user = User.where(email: "1hasanmus2@gmail.com").first_or_initialize
+user.update!(
+  password: "password", 
+  password_confirmation: "password"
+)
 
-# 100.times do |i|
-#     BlogPost.create title: "Blog Post #{i}", content: "This is blog post number #{i}.", published_at: Time.current
-# end
+100.times do |i|
+    BlogPost.create title: "Blog Post #{i}", content: "This is blog post number #{i}.", published_at: Time.current
+end
