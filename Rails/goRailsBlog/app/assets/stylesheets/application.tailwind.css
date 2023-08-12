@@ -46,3 +46,36 @@
 .page.active {
   @apply z-10 border-indigo-500 bg-indigo-50 text-indigo-600 relative inline-flex items-center border px-4 py-2 text-sm font-medium focus:z-20;
 }
+
+
+body * {
+  font-family: Helvetica, sans-serif, Arial;
+}
+
+p, span, a { 
+  font-family: Helvetica, sans-serif, Arial;
+}
+
+
+/* Apply styles to the common parent element */
+.nav-text {
+  @apply text-black hover:text-[#14213D] text-center hover:font-bold text-lg mx-2 font-[400];
+}
+
+#plus-header {
+  @apply text-4xl font-normal;
+}
+
+/* Apply styles to the "+" element within .nav-text */
+.nav-text:hover #plus-header {
+  @apply text-4xl font-normal text-[#9d9a9a];
+}
+
+/* Apply styles to the "Post" element within .nav-text */
+.nav-text:hover .post-text {
+  @apply hover:text-[#14213D] font-bold text-center;
+}
+
+.hover-strip:hover .strip {
+  @apply bg-[#FCA311];
+}
