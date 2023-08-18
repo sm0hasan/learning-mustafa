@@ -5,11 +5,13 @@
             <%= link_to blog_posts_path, class: "mr-16" do %>
                 <%= svg_tag "logo3", class: "w-[7rem]" %>
             <% end %>
-
-            <%# Create a Post %>
-            <%= link_to new_blog_post_path, class: "flex flex-row items-center justify-center nav-text" do %>
-                <div id="plus-header" class="">+</div>
-                <div class="post-text pl-1">Post</div>
+            
+            <% if user_signed_in? %>
+                <%# Create a Post %>
+                <%= link_to new_blog_post_path, class: "flex flex-row items-center justify-center nav-text" do %>
+                    <div id="plus-header" class="">+</div>
+                    <div class="post-text pl-1">Post</div>
+                <% end %>
             <% end %>
         </div>
         <div class="flex flex-row items-center justify-center">

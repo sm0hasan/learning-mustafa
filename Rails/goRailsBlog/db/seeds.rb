@@ -13,6 +13,15 @@ user.update!(
   password_confirmation: "password"
 )
 
+# 100.times do |i|
+#   BlogPost.create title: "Blog Post #{i}", content: "This is blog post number #{i}.", published_at: Time.current
+# end
+
 100.times do |i|
-    BlogPost.create title: "Blog Post #{i}", content: "This is blog post number #{i}.", published_at: Time.current
+  BlogPost.create!(
+    title: "Blog Post #{i}",
+    content: "This is blog post number #{i}.",
+    published_at: Time.current,
+    user: user
+  )
 end

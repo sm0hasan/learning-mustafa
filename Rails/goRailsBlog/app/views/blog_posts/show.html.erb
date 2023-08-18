@@ -1,6 +1,6 @@
 <div class="flex flex-col space-y-4 mx-auto w-[50rem] border border-[#E5E5E5] shadow py-6 px-9">
     
-    <% if user_signed_in? == true %>
+    <% if user_signed_in? && current_user == @blog_post.user %>
         <div class="flex flex-row justify-between">
             <%# Title %>
             <div class="text-[#14213D] text-xl font-[700]">
