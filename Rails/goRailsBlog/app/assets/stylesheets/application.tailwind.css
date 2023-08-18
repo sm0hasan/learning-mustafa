@@ -79,3 +79,83 @@ p, span, a {
 .hover-strip:hover .strip {
   @apply bg-[#FCA311];
 }
+
+.form-input {
+  @apply shadow border-white transition-colors duration-500 ease-in-out hover:bg-stone-100 hover:border-stone-100 focus:bg-white text-lg font-normal tracking-tight;
+  border-width: 2px !important;
+  @apply ring-0; 
+}
+
+.form-input::placeholder {
+  @apply !font-extralight text-gray-400;
+}
+
+.form-input:focus {
+  border: 2px solid #E5E5E5 !important;
+  box-shadow: 0px 4px 8px 1px #E5E5E5 !important;
+  @apply ring-0;
+}
+
+.form-input:active{
+  border: 2px solid #14213D !important;
+  box-shadow: 0px 4px 8px 1px #E5E5E5 !important;
+  @apply ring-0;
+}
+
+input[type=file] {
+  width: 350px;
+  max-width: 100%;
+  color: #444;
+  padding: 5px;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #555;
+}
+
+input[type=file]::file-selector-button {
+  margin-right: 20px;
+  border: none;
+  background: #14213D;
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  transition: background .2s ease-in-out;
+}
+
+input[type=file]::file-selector-button:hover {
+  background: #FCA311;
+}
+
+.drop-container {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px dashed #999;
+  color: #444;
+  cursor: pointer;
+  transition: background .2s ease-in-out, border .2s ease-in-out;
+}
+
+.drop-container:hover {
+  background: #f5f4f4;
+  border-color: #888;
+}
+
+.drop-container:hover .drop-title {
+  color: #222;
+}
+
+.drop-title {
+  color: #14213D;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  transition: color .2s ease-in-out;
+}

@@ -8,29 +8,76 @@
             </div>
         <% end %>
         <div>
-            <%= form.label :title %>
-            <%= form.text_field :title %>
-        </div>
-        <div>
-            <%= form.label :cover_image %>
-            <% if  @blog_post.cover_image.present? %>
-                <div id="<%= dom_id(blog_post, :cover_image) %>">
-                    <%= image_tag @blog_post.cover_image, class:"w-1/2"%>
-                    <%= link_to "Remove Cover Image", blog_post_cover_image_path(blog_post), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-                </div>
-            <% end %>
-            <%= form.file_field :cover_image %>
-        </div>
-        <div>
-            <%= form.label :content %>
-            <%= form.rich_text_area :content %>
+            <%#= form.label :title, "Title", class: "mb-0.2 ml-4 text-black text-opacity-30", style: "font-size:0.875rem; font-weight:500; line-height:120% letter-spacing:-0.01313rem;" %>
+            <div class="relative mb-[1.94rem]">
+                <%= form.text_field :title, placeholder: "Title", style: "color:#250D53" , class: "form-input rounded  pl-3 pr-6 py-3 w-[30rem] h-11" %>
+            </div>
         </div>
 
         <div>
-            <%= form.label :published_at %>
+            <%#= form.label :content %>
+            <%= form.rich_text_area :content, placeholder: "Content", class: "form-input" %>
+        </div>
+        
+        <div class="!mt-10">
+            <div class="block mb-1">
+                <%= form.label :published_at, class: "text-lg font-normal tracking-tight text-[#14213D]" %>:
+            </div>
+            
             <%= form.datetime_select :published_at, include_blank: true %>
         </div>
 
-        <%= form.button class: "bg-gray-200 rounded hover:bg-gray-400 py-1 px-3 mx-auto" %>
+        <div class="flex flex-col !mt-10 !mb-4">
+            <div data-controller="drop-container" data-drop-container-drop-container class="border p-4 drop-container" id="dropcontainer" >
+                <span class="drop-title">Drop files here</span>
+                <div class="text-lg">or</div>
+                <%= form.file_field :cover_image, class: "", onchange: "previewImage(this);", data: { drop_container_file_input_target: "fileInput" } %>
+            </div>
+            <div class="flex flex-col image-preview mt-4 justify-center">
+                <% if @blog_post.cover_image.present? %>
+                    <div id="<%= dom_id(blog_post, :cover_image) %>">
+                        <%= link_to "Remove Cover Image", blog_post_cover_image_path(blog_post), class: "text-yellow-400 hover:text-white border border-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-white font-medium rounded text-sm px-[0.69rem] py-1 text-center w-40", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+                        <%= image_tag @blog_post.cover_image, class: "w-40 mt-1" %>
+                    </div>
+                <% else %>
+                    <img id="image-preview" class="w-40" style="display:none;">
+                <% end %>
+            </div>
+        </div>
+        <hr class="!mb-4">
+        <% if params[:action] == "edit" %>
+            <div class="flex flex-row justify-between">
+                <div>
+                    <%= button_to "Delete", @blog_post, method: :delete, class: "ml-auto bg-[#E5E5E5] hover:bg-opacity-70 transition-colors duration-500 ease-in-out text-[#14213D] focus:outline-none focus:ring-4 focus:ring-blue-300 rounded-full text-base font-bold px-5 py-2.5 text-center mb-2", data: {turbo_confirm: "Are you sure?"} %>
+                </div>
+                <div>
+                    <%= form.button class: "ml-auto bg-[#FCA311] hover:bg-opacity-70 transition-colors duration-500 ease-in-out text-white focus:outline-none focus:ring-4 focus:ring-blue-300 rounded-full text-base font-bold px-5 py-2.5 text-center mb-2" %>
+                </div>
+            </div>
+        <% else %>
+            <%= form.button class: "w-1/3 ml-auto bg-[#FCA311] hover:bg-opacity-70 transition-colors duration-500 ease-in-out text-white focus:outline-none focus:ring-4 focus:ring-blue-300 rounded-full text-base font-bold px-5 py-2.5 text-center mb-2" %>
+        <% end %>
+        
     </div>
 <% end %>
+
+
+<script>
+    function previewImage(input) {
+        var preview = document.getElementById('image-preview');
+        var file = input.files[0];
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            preview.src = e.target.result;
+            preview.style.display = 'block';
+        }
+
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = '';
+            preview.style.display = 'none';
+        }
+    }
+</script>

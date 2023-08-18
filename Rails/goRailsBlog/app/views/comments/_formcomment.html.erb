@@ -1,20 +1,20 @@
 <%= form_with(model: [@blog_post, @blog_post.comments.build]) do |form| %>
 
-    <div class="py-1 px-3 mx-auto">
-        <%= form.label :name , class: "block mb-2 text-sm font-medium text-gray-900" %>
-        <%= form.text_field :name %>
+    <div class="py-1 mx-auto">
+        <%#= form.label :name , class: "block mb-2 text-sm font-medium text-gray-900" %>
+        <%= form.text_field :name, placeholder: "Name", style: "color:#250D53" , class: "form-input rounded  pl-3 pr-6 py-2 w-[14rem] h-10" %>
     </div>
 
-    <div class="py-3 px-3 mx-auto">
-        <%= form.label :Message , class: "block mb-2 text-sm font-medium text-gray-900"%>
-        <div class="block p-2.5 w-full text-sm text-gray-900 bg-gray-0 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-            <%= form.rich_text_area :body %>
+    <div class="py-3 mx-auto">
+        <%#= form.label :Message , class: "block mb-2 text-sm font-medium text-gray-900"%>
+        <div class="">
+            <%= form.rich_text_area :body, placeholder: "Content", class: "form-input text-[#250D53]" %>
         </div>
         <%# Try using rich_text_area later %>
     </div>
 
-    <div class="py-1 px-3 mx-auto">
-        <%= form.submit class: "bg-gray-200 rounded hover:bg-gray-400 py-1 px-3 mx-auto" %>
+    <div class="py-1 mx-auto">
+        <%= form.submit class: "w-1/4 ml-auto bg-[#FCA311] hover:bg-opacity-70 transition-colors duration-500 ease-in-out text-white focus:outline-none focus:ring-4 focus:ring-blue-300 rounded-full text-base font-bold px-5 py-2.5 text-center mb-2" %>
         <%# try using form.button later %>
     </div>
 

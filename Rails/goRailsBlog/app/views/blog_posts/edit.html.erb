@@ -1,5 +1,8 @@
-<h1>Edit Blog Post</h1>
+<div class="flex flex-col space-y-4 mx-auto w-[50rem] border border-[#E5E5E5] shadow p-6">
+    <div class="text-[#14213D] text-xl font-[700]">
+        <h1>Edit Blog Post</h1>
+    </div>
+    <hr class="mb-1">
+    <%= render partial: "form", locals: {blog_post: @blog_post} %>
+</div>
 
-<%= render partial: "form", locals: {blog_post: @blog_post} %>
-
-<%= button_to "Delete", @blog_post, method: :delete, class: "bg-gray-200 rounded hover:bg-gray-400 py-1 px-3 mx-auto", data: {turbo_confirm: "Are you sure?"} %>
