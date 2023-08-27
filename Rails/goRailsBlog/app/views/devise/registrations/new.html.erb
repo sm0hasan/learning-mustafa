@@ -1,29 +1,67 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="relative flex flex-col space-y-4 mx-auto w-[42rem] border border-[#E5E5E5] shadow py-6 px-9 pb-20 text-[#14213D]">
+  <div class="text-[#14213D] text-xl font-[700]">
+    <h2>Sign up</h2>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+  <hr class="py-1">
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="actions">
-    <%= f.submit "Sign up"%>
-  </div>
-<% end %>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", style: "color:#250D53" , class: "form-input rounded  pl-3 pr-6 py-3 w-full h-11 mt-1 mb-4" %>
+    </div>
 
-<%= render "devise/shared/links" %>
+    <div class="field">
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password", style: "color:#250D53" , class: "form-input rounded  pl-3 pr-6 py-3 w-full h-11 mt-1 mb-4" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", style: "color:#250D53" , class: "form-input rounded  pl-3 pr-6 py-3 w-full h-11 mt-1 mb-4" %>
+    </div>
+
+    <div class="actions mb-5">
+      <%= f.submit "Sign up", class: "absolute bottom-10 right-10 ml-auto bg-[#FCA311] hover:bg-opacity-70 transition-colors duration-500 ease-in-out text-white focus:outline-none focus:ring-4 focus:ring-blue-300 rounded-full text-base font-bold px-5 py-2.5 text-center my-2 w-[7rem]" %>
+    </div>
+  <% end %>
+  
+  <div class="">
+    <%- if controller_name != 'sessions' %>
+      <div class="absolute bottom-[3.3rem] left-9 bg-[#14213D] rounded text-white hover:bg-opacity-90 py-1.5 px-3 mx-auto mt-10">
+        <%= link_to "Log in", new_session_path(resource_name) %><br />
+      </div>
+    <% end %>
+
+    <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+      <div class="absolute bottom-10 right-10 ml-auto bg-[#FCA311] hover:bg-opacity-70 transition-colors duration-500 ease-in-out text-white focus:outline-none focus:ring-4 focus:ring-blue-300 rounded-full text-base font-bold px-5 py-2.5 text-center my-2 w-[7rem]">
+        <%= link_to "Sign up", new_registration_path(resource_name) %><br />
+      </div>
+    <% end %>
+
+    <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+      <div class="hover:underline hover:underline-offset-1">
+        <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+      </div>
+    <% end %>
+
+    <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+      <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
+    <% end %>
+
+    <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
+      <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
+    <% end %>
+
+    <%- if devise_mapping.omniauthable? %>
+      <%- resource_class.omniauth_providers.each do |provider| %>
+        <%= button_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), data: { turbo: false } %><br />
+      <% end %>
+    <% end %>
+  </div>
+</div>
