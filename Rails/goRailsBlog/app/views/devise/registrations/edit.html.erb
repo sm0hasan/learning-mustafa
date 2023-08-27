@@ -17,6 +17,11 @@
       <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
     <% end %>
 
+    <div class="field">
+      <%= f.label :username %><br />
+      <%= f.text_field :username, autofocus: true, autocomplete: "username", style: "color:#250D53" , class: "form-input rounded  pl-3 pr-6 py-3 w-full h-11 mt-1 mb-4" %>
+    </div>
+
     <div class="field mb-4">
       <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
       <%= f.password_field :password, autocomplete: "new-password", style: "color:#250D53" , class: "form-input rounded  pl-3 pr-6 py-3 w-full h-11 mt-1" %>

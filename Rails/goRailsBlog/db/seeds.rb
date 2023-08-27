@@ -9,6 +9,7 @@
 
 user = User.where(email: "1hasanmus2@gmail.com").first_or_initialize
 user.update!(
+  username: "TESTING USERNAME",
   password: "password", 
   password_confirmation: "password"
 )
@@ -32,4 +33,4 @@ user.update!(
 #       content: "This is blog post number #{i}.",
 #       published_at: Time.current,
 #     )
-end
+# end
