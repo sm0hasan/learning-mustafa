@@ -4,7 +4,7 @@
         <div class="text-[#14213D] text-xl font-[700]">
             <h1><%= @blog_post.title %></h1>
         </div>
-        <% if user_signed_in? %>
+        <% if user_signed_in? && current_user == @blog_post.user %>
             <%# Edit %>
             <%= link_to edit_blog_post_path(@blog_post) do %>
                 <div class="font-bold text-sm hover:text-gray-600 border border-transparent hover:border-gray-700 rounded-lg py-0.5 px-1">

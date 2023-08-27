@@ -21,7 +21,7 @@ class BlogPostsController < ApplicationController
     end
 
     def create 
-        @blog_post = BlogPost.new(blog_post_params)
+        @blog_post = current_user.blog_posts.build(blog_post_params)
         if  @blog_post.save
             redirect_to @blog_post
         else
@@ -45,7 +45,7 @@ class BlogPostsController < ApplicationController
     def destroy
         # @blog_post = BlogPost.find(params[:id])
         @blog_post.destroy
-        redirect_to root_path
+        redirect_to blog_posts_path
     end
 
     private

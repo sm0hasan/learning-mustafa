@@ -26,10 +26,10 @@ user.update!(
 #     BlogPost.create title: "Blog Post #{i}", content: "This is blog post number #{i}.", published_at: Time.current
 # end
 
-100.times do |i|
-    BlogPost.create!(
-      title: "Blog Post #{i}",
-      content: "This is blog post number #{i}.",
-      published_at: Time.current,
-    )
+# 100.times do |i|
+#     BlogPost.create!(
+#       title: "Blog Post #{i}",
+#       content: "This is blog post number #{i}.",
+#       published_at: Time.current,
+#     )
 end
