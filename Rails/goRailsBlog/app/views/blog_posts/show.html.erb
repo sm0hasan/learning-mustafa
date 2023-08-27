@@ -18,8 +18,8 @@
 
     <%# Cover Image %>
     <% if @blog_post.cover_image.present? %>
-        <div class="my-2">
-            <%= image_tag @blog_post.cover_image, class: "w-40 mt-1" %>
+        <div class="my-2 flex justify-center bg-[#E5E5E5] py-2 rounded">
+            <%= image_tag @blog_post.cover_image, class: "w-60" %>
         </div>
     <% end %>
 
@@ -33,12 +33,12 @@
         <%# number of comments %>
         <div class="flex mt-3 ml-0 w-[6.5rem] py-[0.25rem] text-xs font-bold text-[#7c7c7c] border rounded-lg border-transparent transition">
             <div>
-                <%= inline_svg_tag "svg/comment.svg", class: "w-[1rem] mr-1 ml-1" %>
+                <%= inline_svg_tag "svg/comment.svg", class: "w-[1rem] mr-1 ml-1 mb-1" %>
             </div>
             <%= @blog_post.comments.count %> Comments
         </div>
         
-        <hr class="my-4">
+        <hr class="mb-4 mt-3">
 
         <%# Comments %>
         <div>
