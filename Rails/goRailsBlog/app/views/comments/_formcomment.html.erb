@@ -1,14 +1,15 @@
 <%= form_with(model: [@blog_post, @blog_post.comments.build]) do |form| %>
 
-    <div class="py-1 mx-auto">
+    <div class="pt-1 mx-auto">
         <%#= form.label :name , class: "block mb-2 text-sm font-medium text-gray-900" %>
-        <%= form.text_field :name, placeholder: "Name", style: "color:#250D53" , class: "form-input rounded  pl-3 pr-6 py-2 w-[14rem] h-10" %>
+        <%#= form.text_field :name, placeholder: "Name", style: "color:#250D53" , class: "form-input rounded  pl-3 pr-6 py-2 w-[14rem] h-10" %>
+        <div><%= current_user.username %></div>
     </div>
 
-    <div class="py-3 mx-auto">
+    <div class="pb-3 pt-2 mx-auto">
         <%#= form.label :Message , class: "block mb-2 text-sm font-medium text-gray-900"%>
         <div class="">
-            <%= form.rich_text_area :body, placeholder: "Content", class: "form-input text-[#250D53]" %>
+            <%= form.text_area :body, placeholder: "Content", class: "form-input text-[#250D53] w-full h-[6rem]" %>
         </div>
         <%# Try using rich_text_area later %>
     </div>

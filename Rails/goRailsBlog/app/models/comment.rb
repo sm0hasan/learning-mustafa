@@ -1,4 +1,4 @@
 class Comment < ApplicationRecord
   belongs_to :blog_post
-  has_rich_text :body
+  belongs_to :user
 end

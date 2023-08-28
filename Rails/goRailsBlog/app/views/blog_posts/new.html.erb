@@ -3,6 +3,68 @@
         <h1>Create a post</h1>
     </div>
     <hr class="mb-1">
-    <%= render partial: "form", locals: {blog_post: @blog_post} %>
+    <%= form_with model: @blog_post do |form| %>
+        <div class="flex flex-col space-y-3 py-3 px-3 mx-auto">
+            <% if form.object.errors.any? %>
+                <div>
+                    <% form.object.errors.full_messages.each do |message| %>
+                        <div><%= message %></div>
+                    <% end %>
+                </div>
+            <% end %>
+            <div>
+                <%#= form.label :title, "Title", class: "mb-0.2 ml-4 text-black text-opacity-30", style: "font-size:0.875rem; font-weight:500; line-height:120% letter-spacing:-0.01313rem;" %>
+                <div class="relative mb-[1.94rem]">
+                    <%= form.text_field :title, placeholder: "Title", style: "color:#250D53" , class: "form-input rounded  pl-3 pr-6 py-3 w-[30rem] h-11" %>
+                </div>
+            </div>
+
+            <div>
+                <%#= form.label :content %>
+                <%= form.rich_text_area :content, placeholder: "Content", class: "form-input" %>
+            </div>
+            
+            <div class="!mt-10">
+                <div class="block mb-1">
+                    <%= form.label :published_at, class: "text-lg font-normal tracking-tight text-[#14213D]" %>:
+                </div>
+                
+                <%= form.datetime_select :published_at, include_blank: true %>
+            </div>
+            
+            <div data-controller="drag-drop" class="drag-drop-area">
+                <%= form.file_field :cover_image, onchange: "previewImage(this)", data: { target: "drag-drop.input" } %>
+                <div class="flex justify-center">
+                    <img id="image-preview" style="display:none;" alt="Image Preview" class="w-40 border border-black rounded mt-1" />
+                </div>
+            </div>
+
+            <hr class="!mb-4">
+            <div class="flex flex-row justify-end">
+                <div>
+                    <%= form.button class: "ml-auto bg-[#FCA311] hover:bg-opacity-70 transition-colors duration-500 ease-in-out text-white focus:outline-none focus:ring-4 focus:ring-blue-300 rounded-full text-base font-bold px-5 py-2.5 text-center mb-2" %>
+                </div>
+            </div>
+        </div>
+    <% end %>
 </div>
 
+<script>
+    function previewImage(input) {
+        var preview = document.getElementById('image-preview');
+        var file = input.files[0];
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            preview.src = e.target.result;
+            preview.style.display = 'block';
+        }
+
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = '';
+            preview.style.display = 'none';
+        }
+    }
+</script>

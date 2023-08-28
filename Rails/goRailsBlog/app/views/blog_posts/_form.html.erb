@@ -26,41 +26,31 @@
             
             <%= form.datetime_select :published_at, include_blank: true %>
         </div>
-
-        <div class="flex flex-col !mt-10 !mb-4">
-            <div data-controller="drop-container" data-drop-container-drop-container class="border p-4 drop-container" id="dropcontainer" >
-                <span class="drop-title">Drop files here</span>
-                <div class="text-lg">or</div>
-                <%= form.file_field :cover_image, class: "", onchange: "previewImage(this);", data: { drop_container_file_input_target: "fileInput" } %>
-            </div>
-            <div class="flex flex-col image-preview mt-4 justify-center">
-                <% if @blog_post.cover_image.present? %>
-                    <div id="<%= dom_id(blog_post, :cover_image) %>">
-                        <%= link_to "Remove Cover Image", blog_post_cover_image_path(blog_post), class: "text-yellow-400 hover:text-white border border-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-white font-medium rounded text-sm px-[0.69rem] py-1 text-center w-40", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-                        <%= image_tag @blog_post.cover_image, class: "w-40 mt-1" %>
+        
+        <div data-controller="drag-drop" class="drag-drop-area">
+            <%= form.file_field :cover_image, onchange: "previewImage(this)", data: { target: "drag-drop.input" } %>
+            <% if @blog_post.cover_image.present? %>
+                <div id="<%= dom_id(blog_post, :cover_image) %>" class="mt-1">
+                    <%= link_to "Remove Cover Image", blog_post_cover_image_path(blog_post), class: "text-yellow-400 hover:text-white border border-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-white font-medium rounded text-sm px-[0.69rem] py-1 text-center w-40", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+                    <div class="flex justify-center">
+                        <%= image_tag @blog_post.cover_image, class: "w-40 mt-1 border border-gray-400 rounded" %>
                     </div>
-                <% else %>
-                    <img id="image-preview" class="w-40" style="display:none;">
-                <% end %>
+                </div>
+            <% else %>
+                <div class="flex justify-center">
+                    <img id="image-preview" style="display:none;" alt="Image Preview" class="w-40 border border-black rounded mt-1" />
+                </div>
+            <% end %>
+        </div>
+
+        <hr class="!mb-4">
+        <div class="flex flex-row justify-end">
+            <div>
+                <%= form.button class: "ml-auto bg-[#FCA311] hover:bg-opacity-70 transition-colors duration-500 ease-in-out text-white focus:outline-none focus:ring-4 focus:ring-blue-300 rounded-full text-base font-bold px-5 py-2.5 text-center mb-2" %>
             </div>
         </div>
-        <hr class="!mb-4">
-        <% if params[:action] == "edit" %>
-            <div class="flex flex-row justify-between">
-                <div>
-                    <%= button_to "Delete", @blog_post, method: :delete, class: "ml-auto bg-[#E5E5E5] hover:bg-opacity-70 transition-colors duration-500 ease-in-out text-[#14213D] focus:outline-none focus:ring-4 focus:ring-blue-300 rounded-full text-base font-bold px-5 py-2.5 text-center mb-2", data: {turbo_confirm: "Are you sure?"} %>
-                </div>
-                <div>
-                    <%= form.button class: "ml-auto bg-[#FCA311] hover:bg-opacity-70 transition-colors duration-500 ease-in-out text-white focus:outline-none focus:ring-4 focus:ring-blue-300 rounded-full text-base font-bold px-5 py-2.5 text-center mb-2" %>
-                </div>
-            </div>
-        <% else %>
-            <%= form.button class: "w-1/3 ml-auto bg-[#FCA311] hover:bg-opacity-70 transition-colors duration-500 ease-in-out text-white focus:outline-none focus:ring-4 focus:ring-blue-300 rounded-full text-base font-bold px-5 py-2.5 text-center mb-2" %>
-        <% end %>
-        
     </div>
 <% end %>
-
 
 <script>
     function previewImage(input) {
@@ -81,3 +71,4 @@
         }
     }
 </script>
+

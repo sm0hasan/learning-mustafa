@@ -4,7 +4,7 @@
         <% @blog_post.comments.each do |comment| %>
             <div class= "py-1 px-3 mx-auto">
                 <div class="flex justify-between">
-                    <p class="font-mono text-sm"><%= comment.name %></p>
+                    <p class="font-mono text-sm"><%= comment.user.username %></p>
                     <p class="font-sans text-sm"><%= time_ago_in_words(comment.created_at) %> ago</p>
                 </div>
                 <p class="pt-0 mt-0"><%= comment.body %></p>

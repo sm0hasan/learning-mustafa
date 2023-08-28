@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   
   resources :blog_posts do
+    collection do
+      get 'redirect'
+    end
     resources :comments#, only: %i[index new create]
     resource :cover_image, only: [:destroy], module: :blog_posts
   end
