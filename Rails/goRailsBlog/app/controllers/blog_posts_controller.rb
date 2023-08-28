@@ -1,19 +1,35 @@
 class BlogPostsController < ApplicationController
    
-    before_action :authenticate_user!, except: [:index, :show]
+    before_action :authenticate_user!, except: [:index, :show, :redirect]
     before_action :set_blog_post, only: [:show, :edit, :update, :destroy] # except: [:index, :create, :new]
+    layout "initial", only: [:redirect]
     
+    def redirect; end
+
+    # def index 
+    #     @blog_posts = user_signed_in? ? BlogPost.sorted : BlogPost.published.sorted
+    #     @pagy, @blog_posts = pagy(@blog_posts)
+    # rescue Pagy::OverflowError
+    #     redirect_to blog_posts_path(page: 1)
+    # end
+
     def index 
-        @blog_posts = user_signed_in? ? BlogPost.sorted : BlogPost.published.sorted
+        if params[:search]
+            @blog_posts = BlogPost.where("title LIKE ?", "%#{params[:search]}%").sorted
+        else
+            @blog_posts = user_signed_in? ? BlogPost.sorted : BlogPost.published.sorted
+        end
         @pagy, @blog_posts = pagy(@blog_posts)
     rescue Pagy::OverflowError
-        redirect_to root_path(page: 1)
+        redirect_to blog_posts_path(page: 1)
     end
+      
 
     def show
         # @blog_post = BlogPost.find(params[:id])
     # rescue ActiveRecord::RecordNotFound
     #     redirect_to root_path
+        # @display_cover_image = @blog_post.cover_image.present? && action_name != "new"
     end
 
     def new
@@ -61,6 +77,6 @@ class BlogPostsController < ApplicationController
         @blog_post = BlogPost.published.find(params[:id])
     end
     rescue ActiveRecord::RecordNotFound
-        redirect_to root_path
+        redirect_to blog_posts_path
     end
 end

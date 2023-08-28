@@ -44,11 +44,12 @@
         <div>
             <%= render partial: "comments/comment", locals: {blog_post: @blog_post, comment: @comment}%>
         </div>
-
-        <%# Add a comment %>
-        <div class="mt-4 font-light text-sm text-gray-400">
-            <%# <h3 class="mb-1 mt-2">Comment</h3> %>
-            <%= render partial: "comments/formcomment", locals: {blog_post: @blog_post, comment: @comment} %>
-        </div>
+        <% if user_signed_in? %>
+            <%# Add a comment %>
+            <div class="mt-4 font-light text-sm text-gray-400">
+                <%# <h3 class="mb-1 mt-2">Comment</h3> %>
+                <%= render partial: "comments/formcomment", locals: {blog_post: @blog_post, comment: @comment} %>
+            </div>
+        <% end %>
     </div>
 </div>

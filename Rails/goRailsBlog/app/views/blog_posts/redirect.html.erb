@@ -1,0 +1,21 @@
+<div class="flex flex-col space-y-4 mx-auto w-[45rem] border border-[#E5E5E5] shadow py-6 px-9 h-[17rem]">
+    <div class="flex mb-2">
+        <div class="text-4xl font-semibold mr-2.5 mt-1">
+            Welcome to </div>
+        <div class="text-5xl font-semibold mb-1 text-red-500" >
+            Reddit...ish
+        </div>
+    </div>
+
+    <hr class="pt-1 pb-5">
+
+    <div class="flex space-x-4">
+        <%= link_to blog_posts_path, class: "flex items-center justify-center h-[5rem] bg-[#14213D] w-1/2 text-white font-semibold py-2 px-4 rounded-md hover:bg-opacity-80 transition duration-300 text-xl" do %>
+            Continue as Guest
+        <% end %>
+        <%= link_to new_user_session_path, class: "flex items-center justify-center h-[5rem] bg-[#FCA311] w-1/2 text-white font-semibold py-2 px-4 rounded-md hover:bg-opacity-80 transition duration-300 text-xl" do %>
+            Login/Signup
+        <% end %>
+    </div>
+
+</div>
