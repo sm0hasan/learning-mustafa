@@ -1,7 +1,7 @@
 class BlogPostsController < ApplicationController
    
     before_action :authenticate_user!, except: [:index, :show, :redirect]
-    before_action :set_blog_post, only: [:show, :edit, :update, :destroy] # except: [:index, :create, :new]
+    before_action :set_blog_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote] # except: [:index, :create, :new]
     layout "initial", only: [:redirect]
     
     def redirect; end
@@ -23,7 +23,28 @@ class BlogPostsController < ApplicationController
     rescue Pagy::OverflowError
         redirect_to blog_posts_path(page: 1)
     end
-      
+
+    def upvote
+        # @blog_post = BlogPost.find(params[:id])
+        @blog_post.upvote_by current_user
+        redirect_back fallback_location: root_path
+    end
+
+    def downvote
+        # @blog_post = BlogPost.find(params[:id])
+        @blog_post.downvote_by current_user
+        redirect_back fallback_location: root_path
+    end
+    
+    # def upvote
+    #     @blog_post = BlogPost.find(params[:id])
+    #     @blog_post.upvote_from current_user
+    # end
+
+    # def downvote
+    #     @blog_post = BlogPost.find(params[:id])
+    #     @blog_post.downvote_from current_user
+    # end
 
     def show
         # @blog_post = BlogPost.find(params[:id])

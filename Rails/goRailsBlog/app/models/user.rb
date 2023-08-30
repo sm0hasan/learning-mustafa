@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  
+  acts_as_voter
+  
   has_many :blog_posts
   has_many :comments
   validates :username, presence: true, uniqueness: true

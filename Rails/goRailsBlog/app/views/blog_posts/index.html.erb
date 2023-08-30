@@ -13,8 +13,39 @@
         <%= link_to blog_post, class: "hover-strip no-underline border border-gray-200 rounded-sm shadow-sm hover:border-gray-300" do %>
             <div class="flex flex-row">
                 <div class="strip w-4 bg-[#14213D] flex-none ml-2 transition-colors duration-500 ease-in-out"></div>
-
-                <div class="py-3 px-3">
+                <div class="w-10 bg-white flex flex-col ml-2 border border-black justify-center items-center">
+                    <%# Upvote/Downvote %>
+                    <% if user_signed_in? %>
+                        <div class="flex">
+                            <%= button_to like_blog_post_path(blog_post), method: :put do %>
+                                <div class="h-0 w-0 border-x-8 border-b-8 border-x-transparent hover:border-b-[#FCA311] <%= (current_user.voted_up_on? blog_post) == false ? 'border-b-[#9f9e9e]' : 'border-b-[#FCA311]' %>"></div>
+                            <% end %>
+                        </div>
+                        <div class="text-sm font-bold text-[#7c7c7c] font-mono">
+                            <%= blog_post.get_upvotes.size - blog_post.get_downvotes.size %>
+                        </div>
+                        <div class="flex">
+                            <%= button_to dislike_blog_post_path(blog_post), method: :put do %>
+                                <div class="h-0 w-0 border-x-8 border-t-8 border-x-transparent hover:border-t-[#14213D] <%= (current_user.voted_down_on? blog_post) == false ? 'border-t-[#9f9e9e]' : 'border-t-[#14213D]' %>"></div>
+                            <% end %>
+                        </div>
+                    <% else %>
+                        <div class="flex">
+                            <%= button_to new_user_session_path do %>
+                                <div class="h-0 w-0 border-x-8 border-b-8 border-x-transparent hover:border-b-[#FCA311] border-b-[#9f9e9e]"></div>
+                            <% end %>
+                        </div>
+                        <div>
+                            <%= blog_post.get_upvotes.size - blog_post.get_downvotes.size %>
+                        </div>
+                        <div class="flex">
+                            <%= button_to new_user_session_path do %>
+                                <div class="h-0 w-0 border-x-8 border-t-8 border-x-transparent hover:border-t-[#14213D] border-t-[#9f9e9e]"></div>
+                            <% end %>
+                        </div>
+                    <% end %>
+                </div>
+                <div class="py-3 pr-3">
                     <h2 class="text-lg font-[600] text-[#14213D] py-1 pl-6 pr-3 mx-auto">
                         <%= blog_post.title %>
                     </h2>

@@ -30,13 +30,49 @@
 
     <%# Comment Section %>
     <div class="mt-4">
-        <%# number of comments %>
-        <div class="flex mt-3 ml-0 w-[6.5rem] py-[0.25rem] text-xs font-bold text-[#7c7c7c] border rounded-lg border-transparent transition">
-            <div>
-                <%= inline_svg_tag "svg/comment.svg", class: "w-[1rem] mr-1 ml-1 mb-1" %>
+        <div class="flex">
+            <%# Upvote/Downvote %>
+            <% if user_signed_in? %>
+                <div class="flex border border-transparent text-sm font-bold text-[#7c7c7c] mt-[0.81rem]">
+                    <div class="flex">
+                        <%= button_to like_blog_post_path(@blog_post), method: :put do %>
+                            <div class="h-0 w-0 border-x-8 border-b-8 border-x-transparent hover:border-b-[#FCA311] <%= (current_user.voted_up_on? @blog_post) == false ? 'border-b-[#9f9e9e]' : 'border-b-[#FCA311]' %>"></div>
+                        <% end %>
+                    </div>
+                    <div class="mx-2 w-3">
+                        <%= @blog_post.get_likes.size - @blog_post.get_downvotes.size %>
+                    </div>
+                    <div class="flex">
+                        <%= button_to dislike_blog_post_path(@blog_post), method: :put do %>
+                            <div class="h-0 w-0 border-x-8 border-t-8 border-x-transparent hover:border-t-[#14213D] <%= (current_user.voted_down_on? @blog_post) == false ? 'border-t-[#9f9e9e]' : 'border-t-[#14213D]' %>"></div>
+                        <% end %>
+                    </div>
+                </div>
+            <% else %>
+                <div class="flex border border-transparent text-sm font-bold text-[#7c7c7c] mt-[0.81rem]">
+                    <div class="flex">
+                        <%= button_to new_user_session_path do %>
+                            <div class="h-0 w-0 border-x-8 border-b-8 border-x-transparent hover:border-b-[#FCA311] border-b-[#9f9e9e]"></div>
+                        <% end %>
+                    </div>
+                    <div class="mx-2 w-3">
+                        <%= @blog_post.get_upvotes.size - @blog_post.get_downvotes.size %>
+                    </div>
+                    <div class="flex">
+                        <%= button_to new_user_session_path do %>
+                            <div class="h-0 w-0 border-x-8 border-t-8 border-x-transparent hover:border-t-[#14213D] border-t-[#9f9e9e]"></div>
+                        <% end %>
+                    </div>
+                </div>
+            <% end %>
+            <%# number of comments %>
+            <div class="flex mt-3 ml-1 w-[6.5rem] py-[0.25rem] text-xs font-bold text-[#7c7c7c] border rounded-lg border-transparent transition">
+                <div>
+                    <%= inline_svg_tag "svg/comment.svg", class: "w-[1rem] mr-1 ml-1 mb-1" %>
+                </div>
+                <%= @blog_post.comments.count %> Comments
             </div>
-            <%= @blog_post.comments.count %> Comments
-        </div>
+        </div> 
         
         <hr class="mb-4 mt-3">
 
