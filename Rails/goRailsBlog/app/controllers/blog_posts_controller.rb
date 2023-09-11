@@ -5,14 +5,7 @@ class BlogPostsController < ApplicationController
     layout "initial", only: [:redirect]
     
     def redirect; end
-
-    # def index 
-    #     @blog_posts = user_signed_in? ? BlogPost.sorted : BlogPost.published.sorted
-    #     @pagy, @blog_posts = pagy(@blog_posts)
-    # rescue Pagy::OverflowError
-    #     redirect_to blog_posts_path(page: 1)
-    # end
-
+    
     def index 
         if params[:search]
             @blog_posts = BlogPost.where("title LIKE ?", "%#{params[:search]}%").sorted
@@ -35,16 +28,6 @@ class BlogPostsController < ApplicationController
         @blog_post.downvote_by current_user
         redirect_back fallback_location: root_path
     end
-    
-    # def upvote
-    #     @blog_post = BlogPost.find(params[:id])
-    #     @blog_post.upvote_from current_user
-    # end
-
-    # def downvote
-    #     @blog_post = BlogPost.find(params[:id])
-    #     @blog_post.downvote_from current_user
-    # end
 
     def show
         # @blog_post = BlogPost.find(params[:id])
@@ -66,9 +49,7 @@ class BlogPostsController < ApplicationController
         end
     end
 
-    def edit
-        # @blog_post = BlogPost.find(params[:id])
-    end
+    def edit; end
 
     def update
         # @blog_post = BlogPost.find(params[:id])
