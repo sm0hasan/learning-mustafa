@@ -81,20 +81,20 @@ debate_topics = [
   "Mental Health Awareness: Breaking the Stigma"
 ]
 
-# 50.times do |i|
-#   title = debate_topics.sample
-#   content = "In today's world, the debate surrounding #{title} continues to capture the attention of experts and the general public alike. While some argue that #{title.downcase}, others emphasize the importance of #{title.downcase}. This blog post delves into the various aspects of #{title}, exploring the nuances and examining the arguments presented by both sides.
+50.times do |i|
+  title = debate_topics.sample
+  content = "In today's world, the debate surrounding #{title} continues to capture the attention of experts and the general public alike. While some argue that #{title.downcase}, others emphasize the importance of #{title.downcase}. This blog post delves into the various aspects of #{title}, exploring the nuances and examining the arguments presented by both sides.
 
-#   #{title} has gained significant traction due to its relevance in contemporary society. As #{title.downcase} gains momentum, proponents argue that #{title.downcase}, citing evidence from studies and real-world examples. On the other hand, critics contend that #{title.downcase}, pointing to historical precedents and ethical considerations.
+  #{title} has gained significant traction due to its relevance in contemporary society. As #{title.downcase} gains momentum, proponents argue that #{title.downcase}, citing evidence from studies and real-world examples. On the other hand, critics contend that #{title.downcase}, pointing to historical precedents and ethical considerations.
 
-#   One of the central points of contention in the #{title} debate is the impact it has on #{title.downcase}. Advocates of #{title.downcase} point to the positive effects on #{title.downcase}, while opponents highlight the potential drawbacks. The intersection of #{title.downcase} and #{title.downcase} raises questions about the broader implications and challenges society faces in addressing #{title.downcase}.
+  One of the central points of contention in the #{title} debate is the impact it has on #{title.downcase}. Advocates of #{title.downcase} point to the positive effects on #{title.downcase}, while opponents highlight the potential drawbacks. The intersection of #{title.downcase} and #{title.downcase} raises questions about the broader implications and challenges society faces in addressing #{title.downcase}.
 
-#   In conclusion, the ongoing discourse about #{title} underscores the complexity of the issue and the need for thoughtful consideration. As individuals, communities, and policymakers grapple with #{title.downcase}, it becomes evident that finding common ground and forging a path forward requires a comprehensive understanding of the intricacies involved."
+  In conclusion, the ongoing discourse about #{title} underscores the complexity of the issue and the need for thoughtful consideration. As individuals, communities, and policymakers grapple with #{title.downcase}, it becomes evident that finding common ground and forging a path forward requires a comprehensive understanding of the intricacies involved."
 
-#   BlogPost.create!(
-#     title: title,
-#     content: content,
-#     published_at: Time.current,
-#     user_id: user.id
-#   )
-# end
+  BlogPost.create!(
+    title: title,
+    content: content,
+    published_at: Time.current,
+    user_id: user.id
+  )
+end
