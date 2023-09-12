@@ -1,4 +1,4 @@
-# GoRails Tutorial - Creating a Blog
+# Redddit-ish
 
 ## Want to try?
 **Here is the link to my website, take a look!**
