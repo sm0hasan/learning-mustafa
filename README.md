@@ -2,10 +2,10 @@
 
 ## Want to try?
 **Here is the link to my website, take a look!**
-https://reddit-ish-jhiq.onrender.com/
+<br>https://reddit-ish-jhiq.onrender.com/
 
 **New to Rails? Looking to learn?**
-Start here: https://guides.rubyonrails.org/getting_started.html
+<br>Start here: https://guides.rubyonrails.org/getting_started.html
 
 ## Available Features
 - A flexible user authentication service with...
@@ -31,22 +31,22 @@ Start here: https://guides.rubyonrails.org/getting_started.html
 
 ## Features to be added
 
- - [ ] Users can upload profile pictures
+ - Users can upload profile pictures
 	- Must have a default profile picture for all users
 	- Users can change in user settings or registration
 	- Must be visible on the navbar and any other areas as needed
 
- - [ ] Tagging for posts
+ - Tagging for posts
 	- Users may select from a certain list of tags to tag their posts which will effect the view of other users
 	- Users may select from a certain list of tags (up to 3) within user settings and/or registration which will affect the order in which the posts are displayed
 		- There will be default tag options
 		- Filtering will be based of showing the tagged posts moreso as compared to the other posts
 
-- [ ] User chatting (Direct Messaging)
+- User chatting (Direct Messaging)
 	- Through an available list of all joined users based of their usernames, any other user should have the ability to  message another unless blocked
 	- Search function for the user list
 	- Real-time messaging
 
-- [ ] User chatting (group chats)
+- User chatting (group chats)
 	- Up to 4 people
 	- Displayed the same as direct messaging
